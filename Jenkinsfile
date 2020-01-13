@@ -11,10 +11,11 @@ pipeline{
               sh 'echo Test passed'
             }       
          }
-         stage ('Deployment_to_Dev')
+        stage ('Deployment_to_Dev') {
             steps {
               hygieiaArtifactPublishStep artifactDirectiry: '', artifactGroup: 'poc.app1', artifactName: '*.html', artifactVersion: '1.0.0.$CUSTOM_VERSION'
               hygieiaDeployPublishStep artifactDirectiry: '', artifactGroup: 'poc.app1', artifactName: '*.html', artifactVersion: '1.0.0.$CUSTOM_VERSION', environmentName: 'Development', applicationName: 'App2'
             }
-      }
+        }
+     }
 }
